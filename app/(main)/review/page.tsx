@@ -6,15 +6,17 @@ import { Promo } from "@/components/promo";
 import { Quests } from "@/components/quests";
 import { StickyWrapper } from "@/components/sticky-wrapper";
 import { UserProgress } from "@/components/user-progress";
-import { getUserProgress, getUserSubscription } from "@/db/queries";
+import { getUserProgress, getUserSubscription, getReviewCards } from "@/db/queries";
+import { ReviewDeck } from "@/components/review-deck";
 
 const ReviewPage = async () => {
   const userProgressData = getUserProgress();
   const userSubscriptionData = getUserSubscription();
 
-  const [userProgress, userSubscription] = await Promise.all([
+  const [userProgress, userSubscription, reviewCards] = await Promise.all([
     userProgressData,
     userSubscriptionData,
+    getReviewCards(),
   ]);
 
   if (!userProgress || !userProgress.activeCourse) redirect("/courses");
@@ -45,10 +47,8 @@ const ReviewPage = async () => {
             Review your past lessons to reinforce your memory.
           </p>
 
-          <div className="flex w-full flex-col gap-y-4">
-            <div className="rounded-xl border border-blue-200 bg-blue-50 p-4 text-center text-blue-800">
-              You have no items to review yet. Get out there and learn more!
-            </div>
+          <div className="flex w-full flex-col gap-y-4 pt-6">
+            <ReviewDeck challenges={reviewCards} />
           </div>
         </div>
       </FeedWrapper>

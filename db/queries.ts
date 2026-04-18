@@ -263,3 +263,28 @@ export const getTopTenUsers = cache(async () => {
 
   return data;
 });
+
+export const getReviewCards = cache(async () => {
+  const { userId } = await auth();
+
+  if (!userId) return [];
+
+  const data = await db.query.challenges.findMany({
+    with: {
+      challengeOptions: true,
+      challengeProgress: {
+        where: eq(challengeProgress.userId, userId),
+      },
+    },
+  });
+
+  // Filter out challenges that haven't been completed by the user
+  const completedChallenges = data.filter(
+    (challenge) =>
+      challenge.challengeProgress &&
+      challenge.challengeProgress.length > 0 &&
+      challenge.challengeProgress.every((progress) => progress.completed)
+  );
+
+  return completedChallenges;
+});

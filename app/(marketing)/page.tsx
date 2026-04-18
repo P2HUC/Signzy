@@ -23,7 +23,7 @@ export default function MarketingPage() {
           {/* Left Side: Copy & CTA */}
           <div className="flex w-full flex-col items-center text-center lg:w-1/2 lg:items-start lg:text-left">
             <h1 className="mb-6 max-w-[600px] text-4xl font-extrabold tracking-tight text-white lg:text-6xl lg:leading-[1.1]">
-              The cinematic way to master Sign Language.
+              The way to master Sign Language.
             </h1>
             <p className="mb-8 max-w-[500px] text-lg text-slate-300 lg:text-xl">
               Learn through motion, not text. Watch, tap, and connect with our
