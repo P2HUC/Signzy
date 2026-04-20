@@ -4,15 +4,36 @@ import db from "@/db/drizzle";
 import { challengeOptions } from "@/db/schema";
 import { getIsAdmin } from "@/lib/admin";
 
-export const GET = async () => {
+export const GET = async (req: NextRequest) => {
   const isAdmin = await getIsAdmin();
   if (!isAdmin) return new NextResponse("Unauthorized.", { status: 401 });
 
   const data = await db.query.challengeOptions.findMany();
+  let filteredData = data;
 
-  return new NextResponse(JSON.stringify(data), {
+  const { searchParams } = new URL(req.url);
+  const filter = searchParams.get("filter");
+  if (filter) {
+    try {
+      const parsedFilter = JSON.parse(filter);
+      if (parsedFilter.id && Array.isArray(parsedFilter.id)) {
+        filteredData = filteredData.filter((d) => parsedFilter.id.includes(d.id));
+      }
+    } catch {}
+  }
+
+  let responseData = filteredData;
+  const range = searchParams.get("range");
+  if (range) {
+    try {
+      const parsedRange = JSON.parse(range);
+      responseData = filteredData.slice(parsedRange[0], parsedRange[1] + 1);
+    } catch {}
+  }
+
+  return new NextResponse(JSON.stringify(responseData), {
     headers: {
-      "Content-Range": `challengeOptions 0-${data.length}/${data.length}`,
+      "Content-Range": `challengeOptions 0-${responseData.length}/${filteredData.length}`,
     },
   });
 };

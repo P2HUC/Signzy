@@ -6,13 +6,15 @@ import {
   required,
 } from "react-admin";
 
+const requiredValidation = [required()];
+
 export const CourseEdit = () => {
   return (
     <Edit>
       <SimpleForm>
-        <NumberInput source="id" validate={[required()]} label="Id" />
-        <TextInput source="title" validate={[required()]} label="Title" />
-        <TextInput source="imageSrc" validate={[required()]} label="Image" />
+        <NumberInput source="id" validate={requiredValidation} label="Id" />
+        <TextInput source="title" validate={requiredValidation} label="Title" />
+        <TextInput source="imageSrc" validate={requiredValidation} label="Image" />
       </SimpleForm>
     </Edit>
   );

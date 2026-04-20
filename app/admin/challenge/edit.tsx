@@ -8,28 +8,23 @@ import {
   required,
 } from "react-admin";
 
+const choices = [
+  { id: "SELECT", name: "SELECT" },
+  { id: "ASSIST", name: "ASSIST" },
+  { id: "VIDEO", name: "VIDEO" },
+];
+
+const requiredValidation = [required()];
+
 export const ChallengeEdit = () => {
   return (
     <Edit>
       <SimpleForm>
-        <TextInput source="question" validate={[required()]} label="Question" />
+        <TextInput source="question" validate={requiredValidation} label="Question" />
         <SelectInput
           source="type"
-          validate={[required()]}
-          choices={[
-            {
-              id: "SELECT",
-              name: "SELECT",
-            },
-            {
-              id: "ASSIST",
-              name: "ASSIST",
-            },
-            {
-              id: "VIDEO",
-              name: "VIDEO",
-            },
-          ]}
+          validate={requiredValidation}
+          choices={choices}
         />
         <ReferenceInput source="lessonId" reference="lessons" />
         <NumberInput source="order" validate={required()} label="Order" />

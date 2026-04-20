@@ -42,14 +42,14 @@ const main = async () => {
       unitInsertions.push(
         {
           courseId: course.id,
-          title: "Unit 1",
-          description: `The basics of ${course.title}`,
+          title: "Bài 1",
+          description: `Cơ bản về ${course.title}`,
           order: 1,
         },
         {
           courseId: course.id,
-          title: "Unit 2",
-          description: `Intermediate ${course.title}`,
+          title: "Bài 2",
+          description: `Trung cấp ${course.title}`,
           order: 2,
         }
       );
@@ -63,16 +63,16 @@ const main = async () => {
     const lessonInsertions = [];
     for (const unit of units) {
       lessonInsertions.push(
-        { unitId: unit.id, title: "Nouns", order: 1, iconSrc: "/vnflg.svg" },
-        { unitId: unit.id, title: "Verbs", order: 2, iconSrc: "/points.svg" },
+        { unitId: unit.id, title: "Danh từ", order: 1, iconSrc: "/vnflg.svg" },
+        { unitId: unit.id, title: "Động từ", order: 2, iconSrc: "/points.svg" },
         {
           unitId: unit.id,
-          title: "Adjectives",
+          title: "Tính từ",
           order: 3,
           iconSrc: "/vnflg.svg",
         },
-        { unitId: unit.id, title: "Phrases", order: 4, iconSrc: "/mascot.svg" },
-        { unitId: unit.id, title: "Sentences", order: 5, iconSrc: "/vnflg.svg" }
+        { unitId: unit.id, title: "Cụm từ", order: 4, iconSrc: "/mascot.svg" },
+        { unitId: unit.id, title: "Câu", order: 5, iconSrc: "/vnflg.svg" }
       );
     }
     const lessons = await db
@@ -101,14 +101,14 @@ const main = async () => {
         {
           lessonId: lesson.id,
           type: "ASSIST",
-          question: "What is this sign mean?",
+          question: "Ký hiệu này có nghĩa là gì?",
           videoSrc: "/videos/xinchao.mp4",
           order: 3,
         },
         {
           lessonId: lesson.id,
           type: "SELECT",
-          question: 'Select the sign for "Sinh nhật"',
+          question: 'Chọn ký hiệu cho "Sinh nhật"',
           videoSrc: null,
           order: 4,
         },
@@ -122,21 +122,21 @@ const main = async () => {
         {
           lessonId: lesson.id,
           type: "ASSIST",
-          question: "What is this sign mean?",
+          question: "Ký hiệu này có nghĩa là gì?",
           videoSrc: "/videos/sn.mp4",
           order: 6,
         },
         {
           lessonId: lesson.id,
           type: "ASSIST",
-          question: "What sign is this?",
+          question: "Ký hiệu này là gì?",
           videoSrc: "/videos/khoe.mp4",
           order: 7,
         },
         {
           lessonId: lesson.id,
           type: "ASSIST",
-          question: "What sign is this?",
+          question: "Ký hiệu này là gì?",
           videoSrc: "/videos/fam.mp4",
           order: 8,
         }
@@ -156,21 +156,21 @@ const main = async () => {
           {
             challengeId: challenge.id,
             correct: true,
-            text: "Hello",
+            text: "Xin chào",
             imageSrc: null,
             audioSrc: null,
           },
           {
             challengeId: challenge.id,
             correct: false,
-            text: "Goodbye",
+            text: "Tạm biệt",
             imageSrc: null,
             audioSrc: null,
           },
           {
             challengeId: challenge.id,
             correct: false,
-            text: "Thank you",
+            text: "Cảm ơn",
             imageSrc: null,
             audioSrc: null,
           }
@@ -181,21 +181,21 @@ const main = async () => {
           {
             challengeId: challenge.id,
             correct: true,
-            text: "Hello",
+            text: "Gia đình",
             imageSrc: null,
             audioSrc: null,
           },
           {
             challengeId: challenge.id,
             correct: false,
-            text: "Goodbye",
+            text: "Bạn bè",
             imageSrc: null,
             audioSrc: null,
           },
           {
             challengeId: challenge.id,
             correct: false,
-            text: "Thank you",
+            text: "Đồng nghiệp",
             imageSrc: null,
             audioSrc: null,
           }
@@ -259,21 +259,21 @@ const main = async () => {
           {
             challengeId: challenge.id,
             correct: true,
-            text: "Hello",
+            text: "Tôi khoẻ",
             imageSrc: null,
             audioSrc: null,
           },
           {
             challengeId: challenge.id,
             correct: false,
-            text: "Goodbye",
+            text: "Mệt mỏi",
             imageSrc: null,
             audioSrc: null,
           },
           {
             challengeId: challenge.id,
             correct: false,
-            text: "Thank you",
+            text: "Ốm",
             imageSrc: null,
             audioSrc: null,
           }

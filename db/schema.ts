@@ -157,3 +157,14 @@ export const userSubscription = pgTable("user_subscription", {
   stripePriceId: text("stripe_price_id").notNull(),
   stripeCurrentPeriodEnd: timestamp("stripe_current_period_end").notNull(),
 });
+
+export const videoResources = pgTable("video_resources", {
+  id: serial("id").primaryKey(),
+  title: text("title").notNull(),
+  description: text("description"),
+  thumbnailSrc: text("thumbnail_src").notNull(),
+  youtubeUrl: text("youtube_url").notNull(),
+  category: text("category").default("general"),
+  order: integer("order").notNull().default(0),
+});
+

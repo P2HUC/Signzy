@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Outer glowing shadow -->
+  <rect x="9" y="19" width="82" height="62" rx="15" fill="none" stroke="#FCA5A5" stroke-width="2" opacity="0.5"/>
+  <!-- Main red background -->
+  <rect x="5" y="25" width="90" height="50" rx="12" fill="#EF4444"/>
+  <!-- Highlight reflection -->
+  <path d="M10 25 Q 50 20 90 25 L90 35 Q 50 30 10 35 Z" fill="#F87171" opacity="0.6" />
+  <!-- Play button triangle -->
+  <path d="M42 37 L65 50 L42 63 Z" fill="#FFFFFF"/>
+</svg>

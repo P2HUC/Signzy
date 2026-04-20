@@ -7,14 +7,16 @@ import {
   required,
 } from "react-admin";
 
+const requiredValidation = [required()];
+
 export const UnitCreate = () => {
   return (
     <Create>
       <SimpleForm>
-        <TextInput source="title" validate={[required()]} label="Title" />
+        <TextInput source="title" validate={requiredValidation} label="Title" />
         <TextInput
           source="description"
-          validate={[required()]}
+          validate={requiredValidation}
           label="Description"
         />
         <ReferenceInput source="courseId" reference="courses" />

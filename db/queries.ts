@@ -11,6 +11,7 @@ import {
   units,
   userProgress,
   userSubscription,
+  videoResources,
 } from "./schema";
 
 const DAY_IN_MS = 86_400_000;
@@ -287,4 +288,12 @@ export const getReviewCards = cache(async () => {
   );
 
   return completedChallenges;
+});
+
+export const getVideoResources = cache(async () => {
+  const data = await db.query.videoResources.findMany({
+    orderBy: (videoResources, { asc }) => [asc(videoResources.order)],
+  });
+
+  return data;
 });

@@ -6,20 +6,20 @@ import "leaflet/dist/leaflet.css";
 import L from "leaflet";
 import Image from "next/image";
 
-// Fix missing marker icons in leaflet with Next.js/Webpack
-const iconPerson = new L.Icon({
-    iconUrl: '/mascot.svg',
-    iconRetinaUrl: '/mascot.svg',
-    iconSize: [40, 40],
-    iconAnchor: [20, 20],
-    popupAnchor: [0, -20],
+// Use the user's custom placeholder icon
+const iconLocation = new L.Icon({
+    iconUrl: '/icon/placeholder.png',
+    iconRetinaUrl: '/icon/placeholder.png',
+    iconSize: [50, 50],
+    iconAnchor: [25, 50],
+    popupAnchor: [0, -50],
 });
 
 // A component that updates the map's center when location changes
 function ChangeView({ center }: { center: [number, number] }) {
     const map = useMap();
     useEffect(() => {
-        map.setView(center, 15);
+        map.setView(center, 18);
     }, [center, map]);
     return null;
 }
@@ -29,20 +29,8 @@ export default function MapComponent() {
     const [errorMsg, setErrorMsg] = useState<string | null>(null);
 
     useEffect(() => {
-        if (!navigator.geolocation) {
-            setErrorMsg("Geolocation is not supported by your browser");
-            return;
-        }
-
-        navigator.geolocation.getCurrentPosition(
-            (pos) => {
-                setPosition([pos.coords.latitude, pos.coords.longitude]);
-            },
-            (err) => {
-                setErrorMsg("Unable to retrieve your location");
-                console.error(err);
-            }
-        );
+        // Hardcode location to Da Nang City as the map is specifically for Da Nang
+        setPosition([16.0544, 108.2022]);
     }, []);
 
     if (errorMsg) {
@@ -64,8 +52,9 @@ export default function MapComponent() {
 
     return (
         <MapContainer
+            key={`${position[0]}-${position[1]}`}
             center={position}
-            zoom={15}
+            zoom={18}
             scrollWheelZoom={true}
             className="h-full w-full z-0"
         >
@@ -75,7 +64,7 @@ export default function MapComponent() {
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             />
 
-            <Marker position={position} icon={iconPerson}>
+            <Marker position={position} icon={iconLocation}>
                 <Popup>
                     <div className="text-center font-bold">
                         You are here!

@@ -43,7 +43,7 @@ export default function MarketingPage() {
                       size="lg"
                       className="h-14 w-full rounded-xl bg-blue-600 text-lg font-bold text-white shadow-lg shadow-blue-900/40 hover:bg-blue-500"
                     >
-                      Start Learning Now
+                      Start Learning Now !!!
                     </Button>
                   </SignUpButton>
 
@@ -81,7 +81,7 @@ export default function MarketingPage() {
                 loop
                 muted
                 playsInline
-                className="h-full w-full object-cover opacity-90"
+                className="h-full w-full object-cover object-[45%_center] opacity-90"
               />
               <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-900/10 to-transparent" />
               <div className="absolute bottom-6 left-6 right-6 flex items-center justify-between rounded-xl border border-white/10 bg-slate-900/80 p-4 backdrop-blur-md">

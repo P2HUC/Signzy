@@ -18,8 +18,13 @@ import { LessonList } from "./lesson/list";
 import { UnitCreate } from "./unit/create";
 import { UnitEdit } from "./unit/edit";
 import { UnitList } from "./unit/list";
+import { VideoResourceCreate } from "./videoResource/create";
+import { VideoResourceEdit } from "./videoResource/edit";
+import { VideoResourceList } from "./videoResource/list";
 
 const dataProvider = simpleRestProvider("/api");
+
+const options = { label: "Challenge Options" };
 
 const App = () => {
   return (
@@ -62,9 +67,15 @@ const App = () => {
         list={ChallengeOptionsList}
         create={ChallengeOptionCreate}
         edit={ChallengeOptionEdit}
-        options={{
-          label: "Challenge Options",
-        }}
+        options={options}
+      />
+
+      <Resource
+        name="videoResources"
+        recordRepresentation="title"
+        list={VideoResourceList}
+        create={VideoResourceCreate}
+        edit={VideoResourceEdit}
       />
     </Admin>
   );

@@ -1,14 +1,14 @@
 import { type NextRequest, NextResponse } from "next/server";
 
 import db from "@/db/drizzle";
-import { challenges } from "@/db/schema";
+import { videoResources } from "@/db/schema";
 import { getIsAdmin } from "@/lib/admin";
 
 export const GET = async (req: NextRequest) => {
   const isAdmin = await getIsAdmin();
   if (!isAdmin) return new NextResponse("Unauthorized.", { status: 401 });
 
-  const data = await db.query.challenges.findMany();
+  const data = await db.query.videoResources.findMany();
   let filteredData = data;
 
   const { searchParams } = new URL(req.url);
@@ -33,7 +33,7 @@ export const GET = async (req: NextRequest) => {
 
   return new NextResponse(JSON.stringify(responseData), {
     headers: {
-      "Content-Range": `challenges 0-${responseData.length}/${filteredData.length}`,
+      "Content-Range": `videoResources 0-${responseData.length}/${filteredData.length}`,
     },
   });
 };
@@ -42,10 +42,10 @@ export const POST = async (req: NextRequest) => {
   const isAdmin = await getIsAdmin();
   if (!isAdmin) return new NextResponse("Unauthorized.", { status: 401 });
 
-  const body = (await req.json()) as typeof challenges.$inferSelect;
+  const body = (await req.json()) as typeof videoResources.$inferSelect;
 
   const data = await db
-    .insert(challenges)
+    .insert(videoResources)
     .values({
       ...body,
     })

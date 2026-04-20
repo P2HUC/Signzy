@@ -20,22 +20,17 @@ export const Sidebar = ({ className }: SidebarProps) => {
         className
       )}
     >
-      <Link href="/learn">
-        <div className="flex items-center pb-7 pl-12 pt-8">
-          <Image
-            src="/mascot.svg"
-            alt="Mascot"
-            height={100}
-            width={100}
-            className="transition-transform duration-300 hover:rotate-2 hover:scale-110"
-          />
-        </div>
+      <Link href="/learn" className="flex items-center pb-7 pl-6 pt-8">
+        <h1 className="text-3xl font-extrabold tracking-wide text-neutral-800 dark:text-white">
+          Signzy<span className="text-blue-500">.</span>
+        </h1>
       </Link>
 
       <div className="flex flex-1 flex-col gap-y-2">
         <SidebarItem label="Learn" href="/learn" iconSrc="/learn.svg" />
         <SidebarItem label="Review" href="/review" iconSrc="/review.svg" />
-        <SidebarItem label="Signzy Map" href="/signzy-map" iconSrc="/map.svg" />
+        <SidebarItem label="Video Courses" href="/video-courses" iconSrc="/icon/media.png" />
+        <SidebarItem label="Signzy Map" href="/signzy-map" iconSrc="/map_tab.png" />
         <SidebarItem
           label="Leaderboard"
           href="/leaderboard"
